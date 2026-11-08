@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://d2m3yh51svvnn"]
+
+[ext_resource type="Texture2D" uid="uid://bdceqddkdbot4" path="res://fat teto.png" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://ce5swyp314cxl" path="res://teto.gd" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://p7fhkn1ehb7t" path="res://teto-wav.mp3" id="3_h2yge"]
+
+[node name="root" type="Node2D" unique_id=1784130391]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=542006863]
+
+[node name="UI" type="Control" parent="CanvasLayer" unique_id=1197882942]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="teto" type="TextureButton" parent="CanvasLayer/UI" unique_id=1737492066]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -146.0
+offset_top = -500.0
+offset_right = 298.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("1_ig7tw")
+script = ExtResource("2_0xm2m")
+
+[node name="money" type="Label" parent="CanvasLayer/UI" unique_id=2003769391]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -33.0
+offset_right = 168.0
+offset_bottom = 42.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "BAGUETTES: 0"
+
+[node name="teto_audio" type="AudioStreamPlayer" parent="." unique_id=361465126]
+stream = ExtResource("3_h2yge")
+volume_db = -3.649
+
+[connection signal="button_down" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_button_down"]
+[connection signal="pressed" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_pressed"]
