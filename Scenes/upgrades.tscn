@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bl81qvesicsyr"]
 
-[ext_resource type="Script" uid="uid://dw5dim156as0u" path="res://upgrade.gd" id="1_k80ou"]
+[ext_resource type="Script" uid="uid://dw5dim156as0u" path="res://Scripts/upgrade.gd" id="1_qnnf3"]
 
 [node name="button" type="Button" unique_id=1794197099]
-custom_minimum_size = Vector2(265, 50)
-offset_right = 265.0
-offset_bottom = 49.0
-script = ExtResource("1_k80ou")
+custom_minimum_size = Vector2(240, 50)
+offset_right = 240.0
+offset_bottom = 50.0
+script = ExtResource("1_qnnf3")
 
 [node name="upgrade_name" type="Label" parent="." unique_id=1382750349]
 layout_mode = 0
@@ -33,8 +33,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -43.0
+offset_left = -51.0
 offset_top = -17.0
+offset_right = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 12
@@ -51,6 +52,6 @@ offset_right = 203.0
 offset_bottom = 13.5
 grow_vertical = 2
 theme_override_font_sizes/font_size = 14
-text = "hey everyone it's me you favorite sale"
+text = "hey everyone it's me "
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

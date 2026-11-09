@@ -1,5 +1,5 @@
 extends Node2D
-var upgrades_scene = preload("res://upgrades.tscn")
+var upgrades_scene = preload("res://Scenes/upgrades.tscn")
 @onready var UI = $CanvasLayer/UI
 @onready var score_label = $CanvasLayer/UI/money
 #@onready var button = $CanvasLayer/UI/Button
