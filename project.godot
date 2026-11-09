@@ -12,7 +12,8 @@ config_version=5
 
 config/name="kasane-clicker"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/image="uid://bdceqddkdbot4"
+config/icon="uid://bdceqddkdbot4"
 
 [autoload]
 

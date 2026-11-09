@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3jalpchwo0i7"
-path="res://.godot/imported/bread.png-529ddd2b6bba194a5959ea8eb260a4b9.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://Sprites/bread.png"
-dest_files=["res://.godot/imported/bread.png-529ddd2b6bba194a5959ea8eb260a4b9.ctex"]
 
 [params]
 
