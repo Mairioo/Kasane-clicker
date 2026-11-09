@@ -3,10 +3,18 @@ var hover_scale = Vector2(0.97,0.97)
 var clicked_scale = Vector2(0.96,0.96)
 @onready var audio = $"../../../teto_audio"
 @onready var score_label = $"../money"
+
+
+
+
 func _ready() -> void:
 	mouse_entered.connect(button_enter)
 	mouse_exited.connect(button_exit)
 	call_deferred("pivot_init")
+	
+	
+func _process(_delta: float) -> void:
+	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 	
 func pivot_init():
 	pivot_offset = size/2

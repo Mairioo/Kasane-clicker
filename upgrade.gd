@@ -1,9 +1,44 @@
 extends Control
+
+var Price: int
+
+var Amount: int = 0
+
 @onready var upgrade_name_label = $upgrade_name
 @onready var price_label = $price
 @onready var amount_label = $amount
-@onready var score_label =$"../money"
+#@onready var score_label =$"../money"
 @onready var upgrade_desc_label = $upgrade_desc
+
+
+@export var Upgrade_Name: String
+@export var Starting_Price: int
+@export var Description: String
+
+@export_category("Mathematics...")
+@export var Growth_rate: float = 1.15
+
+
+func _ready() -> void:
+	upgrade_name_label.text = Upgrade_Name
+	price_label.text = str(Starting_Price)
+	upgrade_desc_label.text = Description
+	Price = Starting_Price
+
+func _process(_delta: float) -> void:
+	
+	#change desc in runtime or whatever
+	upgrade_name_label.text = Upgrade_Name
+	amount_label.text = str(Amount)
+	price_label.text = str(Price)
+	upgrade_desc_label.text = Description
+	
+	
+	if GlobalPlayerData.score < Price:
+		modulate = "ff8688"
+	else:
+		modulate = "ffffff"
+
 # Called when the node enters the scne tree for the first time.
 func set_upgrade_data(upgr_name, price, desc):
 	upgrade_name_label.text = upgr_name
@@ -15,24 +50,30 @@ func canBuy(upgrade_price):
 	return false
 	
 func update_ui(amount,price):
-	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
+	#score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 	amount_label.text = "amount: " + str(amount)
 	price_label.text = "price: " + str(price)
 
 func calculate_upgrade_price(upgrade, amount):
-	var new_price = int(upgrade.starting_price * (1.15**amount))
-	upgrade.starting_price = new_price
+	var new_price = int(upgrade.starting_price * (Growth_rate**amount))
+	upgrade.price = new_price
+	
+	
 func buy_upgrade():
-	var upgrade_data = self.get_meta("button_info")
-	if canBuy(upgrade_data.starting_price):
-		GlobalPlayerData.score -= upgrade_data.starting_price
-		upgrade_data.amount += 1
-		calculate_upgrade_price(upgrade_data, upgrade_data.amount)
-		update_ui(upgrade_data.amount,upgrade_data.starting_price)
+	# lowk i don't think we have to use metadata for this - octo
+	#var upgrade_data = self.get_meta("button_info")
+	if canBuy(Price):
+		GlobalPlayerData.score -= Price
+		Amount += 1
+		Price *= Growth_rate
+		#calculate_upgrade_price(upgrade_data, Amount)
+		
+		
+		# i put the update ui in process so you dont have to call a function every time
+		#update_ui(upgrade_data.amount,upgrade_data.starting_price)
 	else:
 		print("i spent all my money on roulette and now im broke as shiii... (ball knowledge)")
-func _ready() -> void:
-	pass
 
 func _on_pressed() -> void:
+	print("click")
 	buy_upgrade()
