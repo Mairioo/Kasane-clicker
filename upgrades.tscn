@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bl81qvesicsyr"]
+
+[node name="button" type="Button" unique_id=1794197099]
+offset_right = 265.0
+offset_bottom = 49.0
+
+[node name="upgrade_name" type="Label" parent="." unique_id=1382750349]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 14
+text = "aslkdakdaldkladadlkadl"
+
+[node name="amount" type="Label" parent="." unique_id=1675260728]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -17.0
+offset_right = 60.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "amount: 0"
+
+[node name="price" type="Label" parent="." unique_id=2053319872]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -43.0
+offset_top = -17.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

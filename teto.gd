@@ -1,11 +1,8 @@
 extends TextureButton
-var score = 0
-var click_mult = 1
 var hover_scale = Vector2(0.97,0.97)
 var clicked_scale = Vector2(0.96,0.96)
 @onready var audio = $"../../../teto_audio"
 @onready var score_label = $"../money"
-## Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	mouse_entered.connect(button_enter)
 	mouse_exited.connect(button_exit)
@@ -15,8 +12,8 @@ func pivot_init():
 	pivot_offset = size/2
 	
 func update_score():
-	score += click_mult
-	score_label.text = "BAGUETTES: " + str(score)
+	GlobalPlayerData.score += GlobalPlayerData.click_mult
+	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 
 func button_enter():
 	var tween = get_tree().create_tween()
@@ -32,5 +29,6 @@ func button_press_anim():
 	tween.tween_property(self,"scale",clicked_scale,0.06).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.1).set_trans(Tween.TRANS_SINE)
 func _on_pressed() -> void:
+	print(GlobalPlayerData.score)
 	button_press_anim()
 	update_score()
