@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bdceqddkdbot4" path="res://Sprites/fat teto.png" id="3_344ge"]
 [ext_resource type="Script" uid="uid://ce5swyp314cxl" path="res://Scripts/teto.gd" id="4_21xkr"]
 [ext_resource type="Texture2D" uid="uid://2bwtec6cvwjw" path="res://Sprites/france.png" id="5_6bp64"]
-[ext_resource type="AudioStream" uid="uid://p7fhkn1ehb7t" path="res://teto-wav.mp3" id="5_hptm8"]
+[ext_resource type="AudioStream" uid="uid://p7fhkn1ehb7t" path="res://audio/teto-wav.mp3" id="5_hptm8"]
 [ext_resource type="Script" uid="uid://dyy8yn7d34fe0" path="res://Scripts/globalPlayerData.gd" id="6_d1ilt"]
+[ext_resource type="AudioStream" uid="uid://c1ikf837gya2d" path="res://audio/kasane clicker - boss theme.mp3" id="8_344ge"]
 
 [node name="root" type="Node2D" unique_id=1784130391]
 script = ExtResource("1_21xkr")
@@ -33,34 +34,43 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Upgrade1" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=1794197099 instance=ExtResource("2_6bp64")]
+[node name="upgrade_template" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=1794197099 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
-Upgrade_Name = "The upgrade"
-Starting_Price = 10
-Description = "so like, it's a test"
+Upgrade_Name = "More baguettes"
+Starting_Price = 20
+Description = "+1 baguettes per second"
+idle_profit = 1
 
 [node name="Upgrade2" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=1802572104 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
-Upgrade_Name = "The upgrade but again"
-Starting_Price = 15
-Description = "so like, it's a test, SIKE"
+Upgrade_Name = "Bakery"
+Starting_Price = 115
+Description = "+5 baguettes per second"
+idle_profit = 5
 Growth_rate = 1.5
 
 [node name="Upgrade3" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=1515638880 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
-Upgrade_Name = "loop"
-Starting_Price = 15
-Description = "yeah i copied and pasted"
+Upgrade_Name = "Wheat farm"
+Starting_Price = 1000
+Description = "+10 baguettes per second"
+idle_profit = 10
 Growth_rate = 1.5
 
 [node name="Upgrade4" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=380665930 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
-Upgrade_Name = "loop"
-Starting_Price = 15
-Description = "yeah i copied and pasted"
+Upgrade_Name = "Baguette Factory"
+Starting_Price = 5000
+Description = "+15 baguettes per second"
+idle_profit = 20
 Growth_rate = 1.5
 
 [node name="Upgrade5" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=341934953 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
 Upgrade_Name = "loop"
 Starting_Price = 15
@@ -68,6 +78,7 @@ Description = "yeah i copied and pasted"
 Growth_rate = 1.5
 
 [node name="Upgrade6" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=851802931 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
 Upgrade_Name = "loop"
 Starting_Price = 15
@@ -75,6 +86,7 @@ Description = "yeah i copied and pasted"
 Growth_rate = 1.5
 
 [node name="Upgrade7" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=2047689647 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
 Upgrade_Name = "loop"
 Starting_Price = 15
@@ -82,6 +94,7 @@ Description = "yeah i copied and pasted"
 Growth_rate = 1.5
 
 [node name="Upgrade8" parent="CanvasLayer/UI/ScrollContainer/Upgrades" unique_id=1030520454 instance=ExtResource("2_6bp64")]
+visible = false
 layout_mode = 2
 Upgrade_Name = "loop"
 Starting_Price = 15
@@ -126,10 +139,15 @@ flip_h = true
 
 [node name="teto_audio" type="AudioStreamPlayer" parent="." unique_id=361465126]
 stream = ExtResource("5_hptm8")
-volume_db = -3.649
+volume_db = -8.21
 
 [node name="GameManager" type="Node" parent="." unique_id=1101628022]
 script = ExtResource("6_d1ilt")
 
-[connection signal="button_down" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_button_down"]
+[node name="game music!!!" type="AudioStreamPlayer" parent="." unique_id=1201076777]
+stream = ExtResource("8_344ge")
+volume_db = -13.684
+autoplay = true
+parameters/looping = true
+
 [connection signal="pressed" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_pressed"]

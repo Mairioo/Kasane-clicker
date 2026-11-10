@@ -4,17 +4,19 @@ var Price: int
 
 var Amount: int = 0
 
+var buy = preload("res://audio/buy_1.mp3")
 @onready var upgrade_name_label = $upgrade_name
 @onready var price_label = $price
 @onready var amount_label = $amount
 #@onready var score_label =$"../money"
 @onready var upgrade_desc_label = $upgrade_desc
-
-
 @export var Upgrade_Name: String
 @export var Starting_Price: int
 @export var Description: String
-
+# couldn't think of a better name for "money to be added" lmao, ill have this first upgrade be one that ups ur clicking power
+@export var idle_profit:int
+#not good at naming stuff, this is how much the click mult increases
+@export var click_upgrade_power:int
 @export_category("Mathematics...")
 @export var Growth_rate: float = 1.15
 
@@ -48,7 +50,15 @@ func canBuy(upgrade_price):
 	if GlobalPlayerData.score >= upgrade_price:
 		return true
 	return false
-	
+
+func add_idle():
+	if idle_profit >= 1:
+		var timer = Timer.new()
+		timer.one_shot = false
+		add_child(timer)
+		timer.timeout.connect(func(): GlobalPlayerData.score += idle_profit)
+		timer.start()
+		
 func update_ui(amount,price):
 	#score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 	amount_label.text = "amount: " + str(amount)
@@ -61,9 +71,17 @@ func calculate_upgrade_price(upgrade, amount):
 	
 func buy_upgrade():
 	# lowk i don't think we have to use metadata for this - octo
+	# yeah ur right lmao that was some leftover jank from last night, sorry! - tams
 	#var upgrade_data = self.get_meta("button_info")
 	if canBuy(Price):
 		GlobalPlayerData.score -= Price
+		var buy_audio = AudioStreamPlayer.new()
+		add_child(buy_audio)
+		buy_audio.stream = buy
+		buy_audio.play()
+		if idle_profit >= 1:
+			add_idle()
+		GlobalPlayerData.click_mult += click_upgrade_power
 		Amount += 1
 		Price *= Growth_rate
 		#calculate_upgrade_price(upgrade_data, Amount)

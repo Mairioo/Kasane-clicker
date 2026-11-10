@@ -4,9 +4,6 @@ var clicked_scale = Vector2(0.96,0.96)
 @onready var audio = $"../../../teto_audio"
 @onready var score_label = $"../money"
 
-
-
-
 func _ready() -> void:
 	mouse_entered.connect(button_enter)
 	mouse_exited.connect(button_exit)
@@ -32,11 +29,11 @@ func button_exit():
 	tween.tween_property(self,"scale",Vector2.ONE,0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func button_press_anim():
-	audio.play()
+	# i think the sound is a bit annoying and its time to remove it - tams
+	#audio.play()
 	var tween = create_tween()
 	tween.tween_property(self,"scale",clicked_scale,0.06).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.1).set_trans(Tween.TRANS_SINE)
 func _on_pressed() -> void:
-	print(GlobalPlayerData.score)
 	button_press_anim()
 	update_score()

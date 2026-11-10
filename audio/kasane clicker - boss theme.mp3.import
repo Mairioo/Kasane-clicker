@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1ikf837gya2d"
+path="res://.godot/imported/kasane clicker - boss theme.mp3-07ea5e104a0260a1ae201148d922102d.mp3str"
+
+[deps]
+
+source_file="res://audio/kasane clicker - boss theme.mp3"
+dest_files=["res://.godot/imported/kasane clicker - boss theme.mp3-07ea5e104a0260a1ae201148d922102d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
