@@ -13,6 +13,10 @@ var buy = preload("res://audio/buy_1.mp3")
 #@export var Upgrade_Name: String
 #@export var Starting_Price: int
 #@export var Description: String
+@export var Upgrade_Name: String
+@export var Starting_Price: int
+@export var Description: String
+@export_category("Modifiers")
 # couldn't think of a better name for "money to be added" lmao, ill have this first upgrade be one that ups ur clicking power
 #@export var idle_profit:int
 #not good at naming stuff, this is how much the click mult increases
