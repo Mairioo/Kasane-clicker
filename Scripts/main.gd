@@ -2,11 +2,15 @@ extends Node2D
 var upgrades_scene = preload("res://Scenes/upgrades.tscn")
 @onready var UI = $CanvasLayer/UI
 @onready var score_label = $CanvasLayer/UI/money
+@onready var Anims = $Anims
 #@onready var button = $CanvasLayer/UI/Button
 var upgrade_instance:Button
 var button_area = Vector2(884, 208)
 var button_height = 65
 var upgrade_clicked
+
+var shop_opened: bool = false
+
 func position_upgrades(dict_key,item):
 	var i = GlobalPlayerData.upgrades.find(dict_key) 
 	var offset_y = i * button_height
@@ -32,3 +36,11 @@ func position_upgrades(dict_key,item):
 func _ready() -> void:
 	pass
 	#make_upgrades()
+
+
+func _on_shop_pressed() -> void:
+	if shop_opened:
+		Anims.play_backwards("ShopEnter")
+	else:
+		Anims.play("ShopEnter")
+	shop_opened = !shop_opened
