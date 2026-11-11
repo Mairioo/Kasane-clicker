@@ -21,13 +21,13 @@ var upgrades = [
 		"starting_price":1000,
 		"amount":0,
 		"idle_profit": 10,
-		"upgrade_description":"upgrade description? i hardly know her!"
+		"upgrade_description":"+10 baguettes per second"
 	},
 	{
 		"name":"Baguette Factory",
 		"starting_price": 5000,
 		"amount":0,
 		"idle_profit":20,
-		"upgrade_description":"+15 baguettes per second"
+		"upgrade_description":"+20 baguettes per second"
 	}
 ]
