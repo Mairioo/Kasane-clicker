@@ -1,52 +1,26 @@
 extends Control
 # this is the best way i could come up with to do stuff modularly, sorry.
 var upgrade_data: Dictionary = {}
-var Price: int
-
-var Amount: int = 0
-
 var buy = preload("res://audio/buy_1.mp3")
 @onready var upgrade_name_label = $upgrade_name
 @onready var price_label = $price
 @onready var amount_label = $amount
 @onready var upgrade_desc_label = $upgrade_desc
-#@export var Upgrade_Name: String
-#@export var Starting_Price: int
-#@export var Description: String
-@export var Upgrade_Name: String
-@export var Starting_Price: int
-@export var Description: String
 @export_category("Modifiers")
-# couldn't think of a better name for "money to be added" lmao, ill have this first upgrade be one that ups ur clicking power
-#@export var idle_profit:int
-#not good at naming stuff, this is how much the click mult increases
 @export var click_upgrade_power:int
 @export_category("Mathematics...")
 @export var Growth_rate: float = 1.15
 
-func _ready() -> void:
-	# i think its best if we move back to make buttons via code - tams
-	
-	#upgrade_name_label.text = Upgrade_Name
-	#price_label.text = str(Starting_Price)
-	#upgrade_desc_label.text = Description
-	#Price = Starting_Price
-	pass
-
 func _process(_delta: float) -> void:
-	#change desc in runtime or whatever
-	#upgrade_name_label.text = Upgrade_Name
 	if upgrade_data.is_empty():
 		return
 	amount_label.text = str(upgrade_data.amount)
 	price_label.text = str(upgrade_data.starting_price)
-	#upgrade_desc_label.text = Description
 	if GlobalPlayerData.score < upgrade_data.starting_price:
 		modulate = "ff8688"
 	else:
 		modulate = "ffffff"
-
-# Called when the node enters the scne tree for the first time.
+		
 func set_upgrade_data(data):
 	# this is the upgrade buttons data. 
 	upgrade_data = data
@@ -66,19 +40,12 @@ func add_idle():
 		timer.timeout.connect(func(): GlobalPlayerData.score += upgrade_data.idle_profit)
 		timer.start()
 		
-func update_ui():
-	amount_label.text = "amount: " + str(Amount)
-	price_label.text = "price: " + str(Price)
-
 func calculate_upgrade_price(upgrade, amount):
 	var new_price = int(upgrade.starting_price * (Growth_rate**amount))
 	upgrade.price = new_price
 	
 	
 func buy_upgrade():
-	# lowk i don't think we have to use metadata for this - octo
-	# yeah ur right lmao that was some leftover jank from last night, sorry! - tams
-	#var upgrade_data = self.get_meta("button_info")
 	if canBuy(upgrade_data.starting_price):
 		GlobalPlayerData.score -= upgrade_data.starting_price
 		var buy_audio = AudioStreamPlayer.new()
@@ -91,12 +58,6 @@ func buy_upgrade():
 		upgrade_data.amount += 1
 		var new_price = upgrade_data.starting_price * Growth_rate
 		upgrade_data.starting_price = int(new_price)
-		#update_ui()
-		#calculate_upgrade_price(upgrade_data, Amount)
-		
-		
-		# i put the update ui in process so you dont have to call a function every time
-		#update_ui(upgrade_data.amount,upgrade_data.starting_price)
 	else:
 		print("i spent all my money on roulette and now im broke as shiii... (ball knowledge)")
 

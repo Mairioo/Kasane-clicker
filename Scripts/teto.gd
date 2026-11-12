@@ -1,24 +1,16 @@
 extends TextureButton
 var hover_scale = Vector2(0.97,0.97)
 var clicked_scale = Vector2(0.96,0.96)
-@onready var audio = $"../../../teto_audio"
-@onready var score_label = $"../money"
-
 func _ready() -> void:
 	mouse_entered.connect(button_enter)
 	mouse_exited.connect(button_exit)
 	call_deferred("pivot_init")
-	
-	
-func _process(_delta: float) -> void:
-	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 	
 func pivot_init():
 	pivot_offset = size/2
 	
 func update_score():
 	GlobalPlayerData.score += GlobalPlayerData.click_mult
-	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 
 func button_enter():
 	var tween = get_tree().create_tween()
@@ -29,8 +21,6 @@ func button_exit():
 	tween.tween_property(self,"scale",Vector2.ONE,0.1).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
 func button_press_anim():
-	# i think the sound is a bit annoying and its time to remove it - tams
-	#audio.play()
 	var tween = create_tween()
 	tween.tween_property(self,"scale",clicked_scale,0.06).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "scale", Vector2.ONE, 0.1).set_trans(Tween.TRANS_SINE)

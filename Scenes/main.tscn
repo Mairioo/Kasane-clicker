@@ -146,7 +146,7 @@ scale = Vector2(0.50277776, 0.5078125)
 texture = ExtResource("5_6bp64")
 flip_h = true
 
-[node name="teto" type="TextureButton" parent="CanvasLayer/UI" unique_id=1737492066]
+[node name="teto" type="TextureButton" parent="CanvasLayer/UI" unique_id=857062975]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -175,6 +175,17 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "BAGUETTES: 0"
 
+[node name="background_color" type="ColorRect" parent="CanvasLayer/UI" unique_id=647568238]
+z_index = -5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.9751747, 0.5019534, 0.5401727, 1)
+
 [node name="teto_audio" type="AudioStreamPlayer" parent="." unique_id=361465126]
 stream = ExtResource("5_hptm8")
 volume_db = -8.21
@@ -192,4 +203,6 @@ parameters/looping = true
 libraries/ = SubResource("AnimationLibrary_hptm8")
 
 [connection signal="pressed" from="CanvasLayer/UI/Shop" to="." method="_on_shop_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_mouse_exited"]
 [connection signal="pressed" from="CanvasLayer/UI/teto" to="CanvasLayer/UI/teto" method="_on_pressed"]
