@@ -3,6 +3,9 @@ extends Node2D
 @onready var score_label = $CanvasLayer/UI/money
 @onready var upgrade_template = $CanvasLayer/UI/Upgradeplace/Upgrades/upgrade_template
 @onready var Anims = $Anims
+
+@onready var ShopButton = $CanvasLayer/UI/Shop
+
 var upgrade_instance:Button
 var button_height = 65
 var upgrade_clicked
@@ -19,6 +22,10 @@ func _ready() -> void:
 	pass
 	
 func _process(_delta: float) -> void:
+	if shop_opened:
+		ShopButton.text = "Close Shop"
+	else:
+		ShopButton.text = "Open Shop"
 	score_label.text = "BAGUETTES: " + str(GlobalPlayerData.score)
 	
 func _on_shop_pressed() -> void:
