@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://bl81qvesicsyr"]
 
-[ext_resource type="Script" uid="uid://dw5dim156as0u" path="res://Scripts/upgrade.gd" id="1_qnnf3"]
-
 [node name="button" type="Button" unique_id=1794197099]
 custom_minimum_size = Vector2(240, 50)
 offset_right = 240.0
 offset_bottom = 50.0
-script = ExtResource("1_qnnf3")
 
 [node name="upgrade_name" type="Label" parent="." unique_id=1382750349]
 layout_mode = 0
