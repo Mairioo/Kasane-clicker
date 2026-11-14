@@ -54,8 +54,6 @@ func buy_upgrade():
 		upgrade_data.amount += 1
 		var new_price = upgrade_data.starting_price * (Growth_rate**upgrade_data.amount)
 		upgrade_data.starting_price = int(new_price)
-	else:
-		print("i spent all my money on roulette and now im broke as shiii... (ball knowledge)")
 
 func _on_pressed() -> void:
 	buy_upgrade()

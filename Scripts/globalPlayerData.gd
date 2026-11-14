@@ -40,9 +40,16 @@ var upgrades = [
 	},
 	{
 	"name":"Baguette Dimension",
-	"starting_price":10000000,
+	"starting_price":5000000,
 	"amount":0,
 	"idle_profit":100,
 	"upgrade_description":"+100 baguettes per second"
+	},
+	{
+		"name":"Baguette planet",
+		"starting_price":10000000,
+		"amount":0,
+		"idle_profit":1000,
+		"upgrade_description":"+1000 baguettes per second"
 	}
 ]
